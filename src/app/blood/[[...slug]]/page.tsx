@@ -1,17 +1,14 @@
 import React from "react";
 import Link from "next/link";
 
-type Props = {
-  searchParams: {[key:string]:string|string[]|undefined};
-  params: {slug: string[]}
-}
-export default function Home({params,searchParams}: Props) {
-  
+export default async function Home({params}: {params: Promise<{slug: string[]}>}) {
+  const slugs = await params;
+
   return (
     <div>
       <h2 className="text-xl underline underline-offset-1">papiko</h2>
       <ul>
-        {params.slug ? params.slug.map((key,index)=>(
+        {slugs.slug ? slugs.slug.map((key,index)=>(
           <li key={`val_${index}`}>{key}</li>
         )) : <Link href="blood/umbrella/great/titanic">titanic</Link>}
       </ul>

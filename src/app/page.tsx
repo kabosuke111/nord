@@ -11,30 +11,30 @@ type List = {
   "link": string;
 }
 
-type Sjukdom = {
-  konkurs: string;
-}
+// type Sjukdom = {
+//   konkurs: string;
+// }
 
 const datas = cache(async function() {
   const data: {lists: List[]} = await fetch("https://kabosuke.sakura.ne.jp/unknown/json/db.json").then((res)=>res.json());
   return data;
 })
 
-const good = cache(async function() {
-  const mac: Sjukdom = await fetch('http://localhost:3000/api', {
-    'method':"POST",
-    'headers': {'Content-Type': 'application/json'},
-  }).then((res)=> res.json());
+// const good = cache(async function() {
+//   const mac: Sjukdom = await fetch('http://localhost:3000/api', {
+//     'method':"POST",
+//     'headers': {'Content-Type': 'application/json'},
+//   }).then((res)=> res.json());
 
-  const abazure: string[] = Object.keys(mac);
-  const goes: string = abazure[0] + "：" + mac.konkurs;
+//   const abazure: string[] = Object.keys(mac);
+//   const goes: string = abazure[0] + "：" + mac.konkurs;
 
-  return goes;
-})
+//   return goes;
+// })
 
 export default async function Home() {
   const datalist = await datas();
-  const great = await good();
+  // const great = await good();
 
   return (
     <div>
@@ -42,7 +42,7 @@ export default async function Home() {
         <div key={item.id}>{item.id}:{item.title}</div>
       ))}
       <p>link öppnar</p>
-      <p className="text-rose-600">{great}</p>
+      {/* <p className="text-rose-600">{great}</p> */}
 
       <ul>
         <li className="my-3"><Link href="/gloom" className="block p-2 px-3 border rounded-lg my-2">glooms</Link></li>

@@ -2,18 +2,20 @@ import React from "react";
 import Link from "next/link";
 import LinksComponent from "../../_clientComponent/_linkComponent/LinkComponent";
 
-type Props = {
-  searchParams: {[key:string]:string|string[]|undefined};
-  params: {fight: string}
-}
-export default function Home({params,searchParams}: Props) {
+export default async function Home({params, searchParams}: {
+  params: Promise<{fight: string[]}>, 
+  searchParams: Promise<{[key:string]:string|string[]|undefined}>
+}) {
+
+  const fight = (await params).fight;
+  const prm = await searchParams;
   
   return (
     <div>
-      <h2>{params.fight}</h2>
+      <h2>{fight}</h2>
       <p>nest</p>
-      <p>{searchParams.page}</p>
-      <p>{searchParams.gone}</p>
+      <p>{prm.page}</p>
+      <p>{prm.gone}</p>
       <Link href="/" >homme</Link>
       <LinksComponent links="/" />
     </div>
