@@ -1,13 +1,9 @@
-import Image from "next/image";
 import React from "react";
-import Link from "next/link";
-import LinksComponent from "../../_clientComponent/_linkComponent/LinkComponent";
 
 type Props = {
-  searchParams: {[key:string]:string|string[]|undefined};
   params: {slug: string[]}
 }
-export default function Home({params,searchParams}: Props) {
+export default function Home({params}: Props) {
   
   return (
     <div>

@@ -1,23 +1,24 @@
-import Image from "next/image";
-import React from "react";
-import Link from "next/link";
-import LinksComponent from "../../../../_clientComponent/_linkComponent/LinkComponent";
 
-type Props = {
-  searchParams: {[key:string]:string|string[]|undefined};
-  params: {fight: string[]}
-}
-export default function Home({params,searchParams}: Props) {
-  
+import React from "react";
+
+export default async function Home(
+  {params, searchParams}: {
+    params: Promise<{fight: string[]}>, 
+    searchParams: Promise<{[key:string]:string|string[]|undefined}>
+  }) {
+
+  const fight = (await params).fight;
+  const prm = await searchParams;
+
   return (
     <div>
-      <h2 className="text-xl underline underline-offset-1">
-        <span>{params.fight[0]}</span>
-        <span>{params.fight[1]}</span>
-        {params.fight[2]}</h2>
-      <p>every</p>
-      <Link href="/" >homme</Link>
-      <LinksComponent links="/" />
+      <h2 className="text-xl underline underline-offset-1">{fight}</h2>
+      <p>鬼龍！</p>
+      {prm && Object.entries(prm).map(([key, value])=>(
+        <p key={key}>
+          {key}: {value?.toString()}
+        </p>
+      ))}
     </div>
   );
 }

@@ -4,7 +4,7 @@ export async function GET() {
     return new NextResponse("nittio")
 }
 
-export async function POST(request: Request) {
+export async function POST() {
     return NextResponse.json({"konkurs": "ett folk"});
 
     //routehandlerの処理に何らかのエラーが含まれている場合、第二引数にステータスコードを指定可能

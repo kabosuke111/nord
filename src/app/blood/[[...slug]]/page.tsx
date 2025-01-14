@@ -1,7 +1,5 @@
-import Image from "next/image";
 import React from "react";
 import Link from "next/link";
-import LinksComponent from "../../_clientComponent/_linkComponent/LinkComponent";
 
 type Props = {
   searchParams: {[key:string]:string|string[]|undefined};

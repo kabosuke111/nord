@@ -16,7 +16,7 @@ export default function Layout({
   return (
       <div>
         <header className="bg-slate-400 p-2 rounded-md mb-4 md:bg-black">
-            <h2 className="text-stone-50 text-2xl">faks</h2>
+            <h2 className="text-stone-50 text-2xl">cow</h2>
         </header>
         <div className="bg-slate-100">
         {children}
