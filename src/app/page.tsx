@@ -32,12 +32,18 @@ const datas = cache(async function() {
 //   return goes;
 // })
 
+type Best = [number, ...string[]]
+
 export default async function Home() {
   const datalist = await datas();
   // const great = await good();
 
+  const best: Best = [23, "be", "friend", "alerm"];
+
+
   return (
     <div>
+      <p>{best[0]}</p>
       {datalist.lists.map((item)=>(
         <div key={item.id}>{item.id}:{item.title}</div>
       ))}
